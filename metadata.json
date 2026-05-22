@@ -1,0 +1,8 @@
+{
+  "name": "Control Financiero",
+  "description": "Aplicación de planificación y control financiero personal premium mobile-first e inteligente.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
