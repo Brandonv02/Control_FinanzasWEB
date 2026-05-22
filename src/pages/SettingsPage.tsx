@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import { useFinanceStore } from '../store/financeStore';
+import { useTheme, ThemePreference } from '../context/ThemeContext';
 import { 
   Settings, 
   Trash2, 
@@ -17,10 +18,13 @@ import {
   HelpCircle,
   FileSpreadsheet,
   Award,
-  Wallet
+  Wallet,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 export default function SettingsPage() {
+  const { themePreference, setThemePreference } = useTheme();
   const { profile, setProfile, resetToMockData, clearAllData, transactions, debts, savingGoals, billReminders } = useFinanceStore();
   const [userName, setUserName] = useState(profile.name);
   const [currencySymbol, setCurrencySymbol] = useState(profile.currency);
@@ -99,9 +103,15 @@ export default function SettingsPage() {
           
           <div className="space-y-1.5">
             <label className="text-[10px] text-zinc-400 font-bold uppercase tracking-wide">Modo Visual</label>
-            <div className="w-full bg-black/40 text-zinc-500 border border-white/5 rounded-xl px-3 py-2.5 text-xs font-semibold flex items-center justify-center">
-              Dark Mode Elegante
-            </div>
+            <select
+              value={themePreference}
+              onChange={(e) => setThemePreference(e.target.value as ThemePreference)}
+              className="w-full bg-[#050505] text-zinc-200 border border-white/5 rounded-xl px-3 py-2.5 text-xs font-semibold cursor-pointer outline-none"
+            >
+              <option value="dark">🌙 Dark Mode Premium</option>
+              <option value="light">☀️ Light Mode iOS</option>
+              <option value="system">💻 Sincronizar con Sistema</option>
+            </select>
           </div>
         </div>
 

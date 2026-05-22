@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { HashRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { useFinanceStore } from './store/financeStore';
+import { ThemeProvider } from './context/ThemeContext';
 import IPhoneContainer from './components/IPhoneContainer';
 import Onboarding from './components/Onboarding';
 import Navbar from './components/Navbar';
@@ -73,10 +74,12 @@ function AppContent() {
 
 export default function App() {
   return (
-    <HashRouter>
-      <IPhoneContainer>
-        <AppContent />
-      </IPhoneContainer>
-    </HashRouter>
+    <ThemeProvider>
+      <HashRouter>
+        <IPhoneContainer>
+          <AppContent />
+        </IPhoneContainer>
+      </HashRouter>
+    </ThemeProvider>
   );
 }

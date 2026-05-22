@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import { useFinanceStore } from '../store/financeStore';
+import { useTheme } from '../context/ThemeContext';
 import { formatCurrency, getCategoryDetails } from '../utils/categories';
 import { 
   ArrowUpRight, 
@@ -22,7 +23,9 @@ import {
   Gauge,
   Activity,
   Hourglass,
-  Scale
+  Scale,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 interface DashboardProps {
@@ -30,6 +33,7 @@ interface DashboardProps {
 }
 
 export default function Dashboard({ onOpenModal }: DashboardProps) {
+  const { theme, setThemePreference } = useTheme();
   const { 
     transactions, 
     debts, 
@@ -156,10 +160,24 @@ export default function Dashboard({ onOpenModal }: DashboardProps) {
         </div>
 
         <div className="flex items-center space-x-2">
+          {/* Elegant Theme Switcher */}
+          <button
+            onClick={() => setThemePreference(theme === 'dark' ? 'light' : 'dark')}
+            className="w-9 h-9 rounded-full bg-white dark:bg-[#0F0F11] border border-zinc-200 dark:border-white/5 flex items-center justify-center cursor-pointer text-zinc-650 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors shadow-sm"
+            aria-label="Toggle Theme"
+            title="Cambiar tema visual"
+          >
+            {theme === 'dark' ? (
+              <Sun className="w-[17px] h-[17px] text-amber-500 animate-spin-slow" />
+            ) : (
+              <Moon className="w-[17px] h-[17px] text-indigo-600" />
+            )}
+          </button>
+
           {/* Intelligent Push Notifications Tray Trigger */}
           <button
             onClick={() => setShowNotificationTray(!showNotificationTray)}
-            className="w-9 h-9 rounded-full bg-[#0F0F11] border border-white/5 flex items-center justify-center relative cursor-pointer text-zinc-400 hover:text-zinc-200 transition-colors"
+            className="w-9 h-9 rounded-full bg-white dark:bg-[#0F0F11] border border-zinc-200 dark:border-white/5 flex items-center justify-center relative cursor-pointer text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors shadow-sm"
           >
             <BellRing className="w-4 h-4" />
             {unreadNotificationsCount > 0 && (

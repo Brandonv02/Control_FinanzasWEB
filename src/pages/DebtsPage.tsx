@@ -625,13 +625,13 @@ export default function DebtsPage({ onOpenModal }: DebtsPageProps) {
                     <div className="space-y-1 bg-black/40 p-2.5 rounded-xl border border-white/5">
                       <span className="text-[8.5px] text-zinc-550 block font-sans uppercase">Índice Actual (RDI)</span>
                       <span className="text-sm font-bold text-zinc-200">{debtToIncomeRatio}%</span>
-                      <span className="text-[7vw] sm:text-[9px] text-zinc-500 block font-sans">{currentRiskBadge.label}</span>
+                      <span className="text-[9px] text-zinc-500 block font-sans">{currentRiskBadge.label}</span>
                     </div>
 
                     <div className="space-y-1 bg-black/40 p-2.5 rounded-xl border border-indigo-500/20">
                       <span className="text-[8.5px] text-indigo-400 block font-sans uppercase">Proyectado (RDI + Nuevo)</span>
                       <span className="text-sm font-bold text-indigo-400">{prospectiveDebtToIncomeRatio}%</span>
-                      <span className="text-[7vw] sm:text-[9px] text-indigo-400 block font-sans">{prospectiveRiskBadge.label}</span>
+                      <span className="text-[9px] text-indigo-400 block font-sans">{prospectiveRiskBadge.label}</span>
                     </div>
                   </div>
 

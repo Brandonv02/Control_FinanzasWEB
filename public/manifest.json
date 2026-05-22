@@ -1,22 +1,25 @@
 {
-  "short_name": "SereneFin",
-  "name": "Serene Finance Premium",
-  "description": "Control financiero personal premium inteligente.",
+  "name": "Serene Control Financiero Premium",
+  "short_name": "Serene",
+  "description": "Control financiero premium con ciclos de pago, simuladores de deudas y coach personal AI.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#09090b",
+  "orientation": "portrait-primary",
+  "categories": ["finance", "utilities"],
   "icons": [
     {
-      "src": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=192&h=192&q=80",
+      "src": "https://cdn-icons-png.flaticon.com/512/10041/10041846.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "sizes": "192x192"
+      "purpose": "any maskable"
     },
     {
-      "src": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=512&h=512&q=80",
+      "src": "https://cdn-icons-png.flaticon.com/512/10041/10041846.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "sizes": "512x512"
+      "purpose": "any maskable"
     }
-  ],
-  "start_url": "/",
-  "background_color": "#09090b",
-  "theme_color": "#09090b",
-  "display": "standalone",
-  "orientation": "portrait"
+  ]
 }

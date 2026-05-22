@@ -41,7 +41,7 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="w-full h-[72px] bg-zinc-950/80 backdrop-blur-xl border-t border-zinc-900 px-3 flex items-center justify-around select-none shrink-0 z-40 relative">
+    <div className="w-full h-[72px] bg-white/90 dark:bg-zinc-950/80 backdrop-blur-xl border-t border-zinc-200 dark:border-zinc-900 px-3 flex items-center justify-around select-none shrink-0 z-40 relative">
       
       {/* Background container glow */}
       <div className="absolute inset-x-0 bottom-0 top-0 bg-gradient-to-t from-indigo-500/5 to-transparent pointer-events-none" />
@@ -67,15 +67,15 @@ export default function Navbar() {
             <div 
               className={`p-2 rounded-xl transition-all duration-200 relative ${
                 isActive 
-                  ? 'text-indigo-400 scale-110' 
-                  : 'text-zinc-500 hover:text-zinc-300'
+                  ? 'text-indigo-600 dark:text-indigo-400 scale-110' 
+                  : 'text-zinc-450 dark:text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-350'
               }`}
             >
               <Icon className="w-[21px] h-[21px]" />
 
               {/* Dynamic Notification Dots */}
               {item.badge && unpaidReminderCount > 0 && (
-                <div className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-zinc-950 animate-pulse" />
+                <div className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white dark:ring-zinc-950 animate-pulse" />
               )}
             </div>
 
@@ -83,8 +83,8 @@ export default function Navbar() {
             <span 
               className={`text-[10px] font-sans font-medium tracking-tight mt-0.5 transition-all duration-200 ${
                 isActive 
-                  ? 'text-zinc-200 font-bold' 
-                  : 'text-zinc-500 group-hover:text-zinc-400'
+                  ? 'text-zinc-800 dark:text-zinc-250 font-bold' 
+                  : 'text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-650 dark:group-hover:text-zinc-400'
               }`}
             >
               {item.label}

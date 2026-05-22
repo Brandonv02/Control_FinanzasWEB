@@ -6,12 +6,69 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
+@variant dark (&:where(.dark, .dark *));
+
 /* Base custom styles to provide that native premium PWA feel */
+html, body, #root {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Theme variables */
+:root {
+  --bg-app: #f4f4f5;
+  --bg-card: #ffffff;
+  --text-primary: #09090b;
+  --text-secondary: #52525b;
+  --bg-inner: #f9fafb;
+  --border-color: rgba(9, 9, 11, 0.06);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+}
+
+.dark {
+  --bg-app: #050505;
+  --bg-card: #0F0F11;
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --bg-inner: #050505;
+  --border-color: rgba(255, 255, 255, 0.05);
+  --glass-bg: rgba(24, 24, 27, 0.7);
+}
+
 @layer base {
   body {
-    @apply antialiased select-none overflow-x-hidden bg-[#050505] font-sans text-zinc-100;
+    @apply antialiased select-none overflow-x-hidden font-sans transition-colors duration-205;
+    background-color: var(--bg-app);
+    color: var(--text-primary);
     -webkit-tap-highlight-color: transparent;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
+}
+
+/* Safe area custom utilities */
+.safe-pt {
+  padding-top: env(safe-area-inset-top);
+}
+.safe-pb {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.safe-pl {
+  padding-left: env(safe-area-inset-left);
+}
+.safe-pr {
+  padding-right: env(safe-area-inset-right);
 }
 
 /* Custom Scrollbars */
@@ -32,17 +89,17 @@
 
 /* Glassmorphism Styles */
 .glass-panel {
-  background: rgba(24, 24, 27, 0.7);
+  background: var(--glass-bg);
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
 }
 
 .glass-pill {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(125, 125, 125, 0.08);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
 }
 
 /* Card gestures & visual effects */
@@ -54,3 +111,204 @@
 input, select, textarea {
   outline: none;
 }
+
+/* ==========================================================
+   Fintech Premium LIGHT MODE TRANSLATION OVERRIDES
+   ========================================================== */
+html:not(.dark) {
+  --bg-app: #f4f4f5;
+  --bg-card: #ffffff;
+  --text-primary: #09090b;
+  --text-secondary: #52525b;
+  --bg-inner: #fafafa;
+  --border-color: rgba(9, 9, 11, 0.06);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+}
+
+html:not(.dark) body {
+  background-color: #f4f4f5 !important;
+  color: #09090b !important;
+}
+
+html:not(.dark) .bg-\[\#050505\] {
+  background-color: #f4f4f5 !important;
+}
+
+html:not(.dark) .bg-\[\#0A0A0A\] {
+  background-color: #fafafa !important;
+}
+
+html:not(.dark) .bg-\[\#0F0F11\] {
+  background-color: #ffffff !important;
+  color: #1a1a1e !important;
+}
+
+html:not(.dark) .bg-black {
+  background-color: #f4f4f5 !important;
+}
+
+html:not(.dark) .bg-zinc-950 {
+  background-color: #ffffff !important;
+}
+
+html:not(.dark) .bg-zinc-900 {
+  background-color: #f4f4f5 !important;
+}
+
+html:not(.dark) .bg-zinc-850 {
+  background-color: #e4e4e7 !important;
+}
+
+html:not(.dark) .border-white\/5 {
+  border-color: rgba(9, 9, 11, 0.08) !important;
+}
+
+html:not(.dark) .border-white\/10 {
+  border-color: rgba(9, 9, 11, 0.12) !important;
+}
+
+html:not(.dark) .border-zinc-900 {
+  border-color: rgba(9, 9, 11, 0.08) !important;
+}
+
+html:not(.dark) .border-zinc-850 {
+  border-color: rgba(9, 9, 11, 0.1) !important;
+}
+
+html:not(.dark) .border-zinc-800 {
+  border-color: rgba(9, 9, 11, 0.14) !important;
+}
+
+html:not(.dark) .border-dashed {
+  border-color: rgba(9, 9, 11, 0.1) !important;
+}
+
+/* Glass element light conversions */
+html:not(.dark) .glass-panel {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(9, 9, 11, 0.08) !important;
+}
+
+html:not(.dark) .glass-pill {
+  background: rgba(9, 9, 11, 0.04) !important;
+  border-color: rgba(9, 9, 11, 0.06) !important;
+}
+
+/* Text adaptations */
+html:not(.dark) .text-zinc-100 {
+  color: #09090b !important;
+}
+
+html:not(.dark) .text-zinc-200 {
+  color: #18181b !important;
+}
+
+html:not(.dark) .text-zinc-300 {
+  color: #27272a !important;
+}
+
+html:not(.dark) .text-zinc-400 {
+  color: #52525b !important;
+}
+
+html:not(.dark) .text-zinc-500 {
+  color: #71717a !important;
+}
+
+html:not(.dark) .text-zinc-550 {
+  color: #8a8a93 !important;
+}
+
+html:not(.dark) .text-zinc-450 {
+  color: #71717a !important;
+}
+
+html:not(.dark) .text-zinc-250 {
+  color: #27272a !important;
+}
+
+html:not(.dark) .text-zinc-350 {
+  color: #3f3f46 !important;
+}
+
+/* Overriding background transparency/fractions with light colors */
+html:not(.dark) .bg-black\/40 {
+  background-color: rgba(9, 9, 11, 0.03) !important;
+}
+
+html:not(.dark) .bg-black\/60 {
+  background-color: rgba(9, 9, 11, 0.05) !important;
+}
+
+html:not(.dark) .bg-\[\#0F0F11\]\/90 {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+}
+
+html:not(.dark) .bg-\[\#0F0F11\]\/40 {
+  background-color: rgba(9, 9, 11, 0.02) !important;
+}
+
+html:not(.dark) .bg-\[\#0F0F11\]\/60 {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+html:not(.dark) .bg-zinc-950\/80 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Light button states */
+html:not(.dark) .hover\:bg-\[\#18181B\]:hover {
+  background-color: rgba(9, 9, 11, 0.03) !important;
+}
+
+html:not(.dark) .hover\:text-zinc-100:hover {
+  color: #09090b !important;
+}
+
+html:not(.dark) .text-indigo-400 {
+  color: #4f46e5 !important;
+}
+
+html:not(.dark) .text-emerald-400 {
+  color: #16a34a !important;
+}
+
+html:not(.dark) .text-rose-400 {
+  color: #e11d48 !important;
+}
+
+html:not(.dark) .text-amber-400 {
+  color: #d97706 !important;
+}
+
+html:not(.dark) .bg-indigo-500\/10 {
+  background-color: rgba(79, 70, 229, 0.08) !important;
+}
+
+html:not(.dark) .bg-emerald-500\/10 {
+  background-color: rgba(22, 163, 74, 0.08) !important;
+}
+
+html:not(.dark) .bg-rose-500\/10 {
+  background-color: rgba(225, 29, 72, 0.08) !important;
+}
+
+html:not(.dark) .bg-amber-500\/10 {
+  background-color: rgba(217, 119, 6, 0.08) !important;
+}
+
+/* Custom inputs styling in Light Mode */
+html:not(.dark) input {
+  color: #09090b !important;
+}
+html:not(.dark) input::placeholder {
+  color: #a1a1aa !important;
+}
+
+/* Fix specific backgrounds/borders */
+html:not(.dark) select {
+  background-color: #ffffff !important;
+  color: #09090b !important;
+  border-color: rgba(9, 9, 11, 0.1) !important;
+}
+
